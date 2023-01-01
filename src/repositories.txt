@@ -1,0 +1,1 @@
+https://raw.githubusercontent.com/V0xelTech/CraftPKG_globalrepo/main/packages.json
