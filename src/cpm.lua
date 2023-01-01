@@ -13,23 +13,26 @@ function readRepos()
     handle.close()
 end
 readRepos()
-local firsttimehere = true
+local firstRun = true
 local bars = {"\\","|","/","-"}
 local i = 1
 local macska = false
 function status(msg, type, progress, max)
     local x,y = term.getCursorPos()
     if type == "info" then
-        if not firsttimehere then
-            if macska then
+        if not firstRun then
+            if macska then --what is firstRun for in a status funciton yes.
+                term.setCursorPos(x,y-1)
+                term.clearLine()
                 term.setCursorPos(x,y-2)
+                term.clearLine()
             else
                 term.setCursorPos(x,y-1)
+                term.clearLine()
             end
         end
-        firsttimehere = false
+        firstRun = false
         macska = false
-        term.clearLine()
         print(bars[i].." ["..type.."] "..msg.." "..math.floor(progress/max*100).."% ("..progress.."/"..max..")")
         local w,h = term.getSize()
         if #(bars[i].." ["..type.."] "..msg.." "..math.floor(progress/max*100).."% ("..progress.."/"..max..")") > w then
